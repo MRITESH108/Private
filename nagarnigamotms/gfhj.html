@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Lucknow Nagar Nigam</title>
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-color: #0d6efd;
+            --light-bg: #f1f5f9;
+            --red-color: #fd290d;
+            --dark-color: #2b4377;
+            --blue-bg: #0d6dfd5e;
+        }
+
+        body {
+            background: var(--light-bg);
+            font-family: "Segoe UI", sans-serif;
+            color: #212529;
+        }
+
+        /* =========================
+           HEADER
+        ========================== */
+
+        /* .top-header {
+            background: #fff;
+            border-bottom: 1px solid #e5e7eb;
+            padding: 15px 0;
+        } */
+
+        /* =========================
+             STICKY HEADER
+        ========================= */
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1050;
+            width: 100%;
+        }
+
+        /* Optional:
+        Adds shadow while staying fixed */
+        .top-header {
+            background: #fff;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .custom-navbar {
+            background: var(--red-color);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .logo img {
+            max-height: 80px;
+            width: auto;
+        }
+
+        .logo-text img {
+            max-height: 70px;
+            max-width: 100%;
+            object-fit: contain;
+        }
+
+        /* =========================
+           NAVBAR
+        ========================== */
+
+        /* .custom-navbar {
+            background: var(--red-color);
+            padding: 0;
+        } */
+
+        .custom-navbar .nav-link {
+            color: #fff !important;
+            font-size: 15px;
+            font-weight: 500;
+            padding: 16px 14px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .custom-navbar .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.12);
+            color: #fff !important;
+        }
+
+        .custom-navbar .nav-link.active {
+            background-color: rgba(255, 255, 255, 0.18);
+        }
+
+        /* Underline Animation */
+
+        .custom-navbar .nav-link::after {
+            content: "";
+            position: absolute;
+            left: 14px;
+            bottom: 10px;
+            width: 0;
+            height: 2px;
+            background: #fff;
+            transition: width 0.3s ease;
+        }
+
+        .custom-navbar .nav-link:hover::after,
+        .custom-navbar .nav-link.active::after {
+            width: calc(100% - 28px);
+        }
+
+        /* =========================
+   NOTICE MARQUEE
+========================= */
+        .notice-wrapper {
+            display: flex;
+            align-items: center;
+            background: var(--blue-bg);
+            border-top: 1px solid #cfe8ff;
+            border-bottom: 1px solid #cfe8ff;
+            overflow: hidden;
+        }
+
+        .notice-label {
+            background: var(--dark-color);
+            color: #e8490b;
+            padding: 12px 20px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        /* MARQUEE (CSS ANIMATION) */
+
+        .marquee {
+            overflow: hidden;
+            white-space: nowrap;
+            flex: 1;
+            position: relative;
+        }
+
+        .marquee span {
+            display: inline-block;
+            padding-left: 100%;
+            animation: scroll-left 14s linear infinite;
+            color: #0d47a1;
+            font-weight: 600;
+        }
+
+        @keyframes scroll-left {
+            0% {
+                transform: translateX(0%);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        .marquee:hover span {
+            animation-play-state: paused;
+        }
+
+        /* =========================
+         HERO SLIDER
+    ========================= */
+
+        .hero-slider {
+            margin-top: 10px;
+        }
+
+        .banner-image {
+            max-height: 500px;
+            object-fit: cover;
+            filter: brightness(60%);
+        }
+
+        .carousel-caption {
+            bottom: 50%;
+            transform: translateY(50%);
+            z-index: 2;
+        }
+
+        .carousel-caption h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .carousel-caption p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .carousel-caption .btn {
+            padding: 12px 28px;
+            font-weight: 600;
+            border-radius: 8px;
+        }
+
+        /* Overlay */
+
+        .carousel-item::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.35);
+            z-index: 1;
+        }
+
+        .carousel-caption {
+            z-index: 5;
+        }
+
+        /* Controls */
+
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            width: 3rem;
+            height: 3rem;
+        }
+
+        /* Mobile */
+
+        @media (max-width: 768px) {
+
+            .banner-image {
+                height: 350px;
+            }
+
+            .carousel-caption h1 {
+                font-size: 1.8rem;
+            }
+
+            .carousel-caption p {
+                font-size: 1rem;
+            }
+
+            .carousel-caption {
+                bottom: 40%;
+            }
+        }
+
+        /* =========================
+           SERVICE CARDS
+        ========================== */
+
+        .service-link {
+            text-decoration: none;
+        }
+
+        .service-card {
+            border: none;
+            border-radius: 18px;
+            overflow: hidden;
+            position: relative;
+            min-height: 220px;
+            color: #fff;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+        }
+
+        .service-card .card-body {
+            position: relative;
+            z-index: 2;
+            padding: 30px;
+        }
+
+        .service-card h5 {
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .service-card p {
+            opacity: 0.9;
+            font-size: 14px;
+        }
+
+        .service-icon {
+            position: absolute;
+            right: 20px;
+            bottom: 20px;
+            font-size: 70px;
+            opacity: 0.15;
+        }
+
+        /* CARD COLORS */
+
+        .bg-alizarin {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+        }
+
+        .bg-aqua {
+            background: linear-gradient(135deg, #00bcd4, #0097a7);
+        }
+
+        .bg-cherry {
+            background: linear-gradient(135deg, #c0392b, #96281b);
+        }
+
+        .bg-green-sea {
+            background: linear-gradient(135deg, #16a085, #0e6655);
+        }
+
+        .bg-wood {
+            background: linear-gradient(135deg, #8e6e53, #6d4c41);
+        }
+
+        .bg-blue {
+            background: linear-gradient(135deg, #2980b9, #1f618d);
+        }
+
+        /* =========================
+           FOOTER
+        ========================== */
+
+        footer {
+            background: var(--dark-color);
+            color: #d1d5db;
+            padding: 20px 0;
+            margin-top: 60px;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================== */
+
+        @media (max-width: 991px) {
+
+            .custom-navbar .navbar-collapse {
+                background: #e01d03;
+                padding: 10px;
+                border-radius: 10px;
+                margin-top: 10px;
+            }
+
+            .custom-navbar .nav-link {
+                padding: 12px 15px;
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            .hero-section h1 {
+                font-size: 2rem;
+            }
+
+            .logo,
+            .logo-text {
+                text-align: center;
+                margin-bottom: 10px;
+            }
+
+            .top-header {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <header>
+
+        <!-- Top Header -->
+
+        <div class="top-header ">
+            <div class="container ">
+
+                <div class="row align-items-center">
+
+                    <!-- Logo -->
+                    <div class="col-md-3 text-center text-md-start">
+                        <a href="http://lmc.up.nic.in/" class="logo" target="_blank">
+
+                            <img src="lmclogo.png" alt="Lucknow Nagar Nigam Logo">
+                        </a>
+                    </div>
+
+                    <!-- Text Logo -->
+                    <div class="col-md-9 text-center text-md-start">
+                        <a href="#" class="logo-text">
+
+                            <img src="text-logo.png" alt="Lucknow Nagar Nigam">
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <!-- =========================
+             NAVBAR
+        ========================== -->
+
+        <nav class="navbar navbar-expand-lg navbar-dark custom-navbar shadow-sm sticky-top">
+
+            <div class="container">
+
+                <!-- Mobile Toggle -->
+
+                <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false"
+                    aria-label="Toggle navigation">
+
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Navbar Menu -->
+
+                <div class="collapse navbar-collapse" id="mainNavbar">
+
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                        <li class="nav-item">
+                            <a class="nav-link active" href="gfhj.html">
+
+                                <i class="fa-solid fa-house me-1"></i>
+                                Home
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="knowyourtax.html">
+
+                                <i class="fa-solid fa-magnifying-glass me-1"></i>
+                                Know Your House Tax
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="login.html">
+
+                                <i class="fa-solid fa-right-to-bracket me-1"></i>
+                                Login
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="newregister1.aspx">
+
+                                <i class="fa-solid fa-user-plus me-1"></i>
+                                New Registration
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="User_Loginnew.aspx">
+
+                                <i class="fa-solid fa-indian-rupee-sign me-1"></i>
+                                Pay Tax
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="searchnewhouseid.aspx">
+
+                                <i class="fa-solid fa-id-card me-1"></i>
+                                New House ID
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="forgotpass1.aspx">
+
+                                <i class="fa-solid fa-lock me-1"></i>
+                                Forgot Password
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="MutationHomePage.aspx">
+
+                                <i class="fa-solid fa-file-signature me-1"></i>
+                                House Mutation
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+    <!-- =========================
+     NOTICE MARQUEE
+========================= -->
+
+    <section class="notice-wrapper">
+
+        <div class="notice-label">
+            <i class="fa-solid fa-bullhorn me-2"></i> Important Notice
+        </div>
+
+        <div class="marquee">
+            <span>
+                📢 Property Tax Last Date 30 June 2026 |
+                🏠 Mutation Services Available |
+                💳 Pay Online Securely |
+                📋 Citizen Portal Services |
+            </span>
+        </div>
+
+    </section>
+
+    <!-- =========================
+        HERO BANNER SLIDER 
+        Recommended size:
+        1920×500
+1       600×500
+        ========================= -->
+
+    <section class="hero-slider mb-5">
+
+        <div id="mainBannerSlider" class="carousel slide carousel-fade shadow-lg" data-bs-ride="carousel">
+
+            <!-- Indicators -->
+
+            <div class="carousel-indicators">
+
+                <button type="button" data-bs-target="#mainBannerSlider" data-bs-slide-to="0" class="active"></button>
+
+                <button type="button" data-bs-target="#mainBannerSlider" data-bs-slide-to="1"></button>
+
+                <button type="button" data-bs-target="#mainBannerSlider" data-bs-slide-to="2"></button>
+
+            </div>
+
+            <!-- Slides -->
+
+            <div class="carousel-inner rounded-4 overflow-hidden">
+
+                <!-- Slide 1 -->
+
+                <div class="carousel-item active">
+
+                    <img src="banner1.jpg" class="d-block w-100 banner-image" alt="Lucknow Nagar Nigam">
+
+                    <div class="carousel-caption">
+
+                        <h1>Lucknow Nagar Nigam</h1>
+
+                        <p>
+                            Smart Online Citizen Services Portal
+                        </p>
+
+                        <a href="User_Loginnew.aspx" class="btn btn-light btn-lg mt-2">
+
+                            Login Now
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <!-- Slide 2 -->
+
+                <div class="carousel-item">
+
+                    <img src="banner2.jpg" class="d-block w-100 banner-image" alt="House Tax">
+
+                    <div class="carousel-caption">
+
+                        <h1>Pay House Tax Online</h1>
+
+                        <p>
+                            Fast, Secure & Transparent Tax Services
+                        </p>
+
+                        <a href="searchnewhouseid.aspx" class="btn btn-warning btn-lg mt-2">
+
+                            Know Your Tax
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <!-- Slide 3 -->
+
+                <div class="carousel-item">
+
+                    <img src="banner3.jpg" class="d-block w-100 banner-image" alt="Citizen Services">
+
+                    <div class="carousel-caption">
+
+                        <h1>Digital Citizen Services</h1>
+
+                        <p>
+                            Registration, Mutation & Property Management
+                        </p>
+
+                        <a href="newregister1.aspx" class="btn btn-primary btn-lg mt-2">
+
+                            Register Now
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Controls -->
+
+            <button class="carousel-control-prev" type="button" data-bs-target="#mainBannerSlider" data-bs-slide="prev">
+
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+
+            <button class="carousel-control-next" type="button" data-bs-target="#mainBannerSlider" data-bs-slide="next">
+
+                <span class="carousel-control-next-icon"></span>
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================== -->
+
+    <main class="container py-5">
+
+
+        <!-- Services -->
+
+        <section>
+
+            <div class="row g-4">
+
+                <!-- Portal -->
+
+                <div class="col-md-6 col-lg-4">
+
+                    <a href="http://lmc.up.nic.in/" class="service-link">
+
+                        <div class="card service-card bg-alizarin h-100">
+
+                            <div class="card-body">
+
+                                <h5>Nagar Nigam Portal</h5>
+
+                                <p>
+                                    Access official Lucknow Nagar Nigam services
+                                    and information.
+                                </p>
+
+                                <i class="fa-solid fa-house service-icon"></i>
+
+                            </div>
+
+                        </div>
+
+                    </a>
+
+                </div>
+
+                <!-- Know Tax -->
+
+                <div class="col-md-6 col-lg-4">
+
+                    <a href="searchnewhouseid.aspx" class="service-link">
+
+                        <div class="card service-card bg-aqua h-100">
+
+                            <div class="card-body">
+
+                                <h5>Know Your House Tax</h5>
+
+                                <p>
+                                    Search and view your property tax details online.
+                                </p>
+
+                                <i class="fa-solid fa-magnifying-glass service-icon"></i>
+
+                            </div>
+
+                        </div>
+
+                    </a>
+
+                </div>
+
+                <!-- Login -->
+
+                <div class="col-md-6 col-lg-4">
+
+                    <a href="User_Loginnew.aspx" class="service-link">
+
+                        <div class="card service-card bg-cherry h-100">
+
+                            <div class="card-body">
+
+                                <h5>User Login</h5>
+
+                                <p>
+                                    Login securely to access your citizen dashboard.
+                                </p>
+
+                                <i class="fa-solid fa-key service-icon"></i>
+
+                            </div>
+
+                        </div>
+
+                    </a>
+
+                </div>
+
+                <!-- Register -->
+
+                <div class="col-md-6 col-lg-4">
+
+                    <a href="newregister1.aspx" class="service-link">
+
+                        <div class="card service-card bg-green-sea h-100">
+
+                            <div class="card-body">
+
+                                <h5>Register Your House</h5>
+
+                                <p>
+                                    Create a new property registration in the portal.
+                                </p>
+
+                                <i class="fa-solid fa-user-plus service-icon"></i>
+
+                            </div>
+
+                        </div>
+
+                    </a>
+
+                </div>
+
+                <!-- Pay Tax -->
+
+                <div class="col-md-6 col-lg-4">
+
+                    <a href="User_Loginnew.aspx" class="service-link">
+
+                        <div class="card service-card bg-wood h-100">
+
+                            <div class="card-body">
+
+                                <h5>Pay House Tax</h5>
+
+                                <p>
+                                    Pay your property tax online quickly and securely.
+                                </p>
+
+                                <i class="fa-solid fa-indian-rupee-sign service-icon"></i>
+
+                            </div>
+
+                        </div>
+
+                    </a>
+
+                </div>
+
+                <!-- Mutation -->
+
+                <div class="col-md-6 col-lg-4">
+
+                    <a href="MutationHomePage.aspx" class="service-link">
+
+                        <div class="card service-card bg-blue h-100">
+
+                            <div class="card-body">
+
+                                <h5>House Mutation</h5>
+
+                                <p>
+                                    Apply and manage property mutation services online.
+                                </p>
+
+                                <i class="fa-solid fa-file-signature service-icon"></i>
+
+                            </div>
+
+                        </div>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <div class="container text-center">
+
+            <p>
+                © 2026 Lucknow Nagar Nigam | All Rights Reserved
+            </p>
+
+        </div>
+
+    </footer>
+
+    <!-- Bootstrap JS -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
