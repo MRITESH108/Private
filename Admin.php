@@ -3,7 +3,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Admin extends CI_Controller
 {
-
     public function __construct()
     {
         parent::__construct();
@@ -17,10 +16,13 @@ class Admin extends CI_Controller
 
     public function index()
     {
-        $data['registration_count'] = $this->Db_model->setTable('registrations')->count();
+        $this->load->view('admin/index');
+    }
 
-
-        $this->load->view('admin/index', $data);
+    public function check()
+    {
+        $this->session->set_flashdata('error', 'भुगतान दर्ज करने में समस्या हुई!');
+        $this->load->view('admin/index');
     }
 
     public function ward()
@@ -437,34 +439,6 @@ class Admin extends CI_Controller
         redirect('Admin/houseLocation');
     }
 
-    public function registration1()
-    {
-        $data['wards'] = $this->Db_model->setTable('ward')->get_all([
-            'is_delete' => 0,
-        ]);
-        $data['house_locations'] = $this->Db_model->setTable('house_location')->get_all([
-            'is_delete' => 0,
-        ]);
-        $data['house_types'] = $this->Db_model->setTable('house_type')->get_all([
-            'is_delete' => 0,
-        ]);
-        $data['fin_year'] = $this->Db_model->setTable('fin_year')->get_all([
-            'is_delete' => 0,
-        ]);
-
-        $lasthouse = $this->Db_model->setTable('ward')
-            ->get_row_order(['is_delete' => 0], 'id', 'DESC');
-
-        if ($lasthouse) {
-            $data['crn'] = $crn + 1;
-        } else {
-            $data['crn'] = 1;
-        }
-
-        $data['houses'] = null;
-        $this->load->view('admin/registration', $data);
-    }
-
     public function registration()
     {
         $data['wards'] = $this->Db_model->setTable('ward')->get_all([
@@ -552,8 +526,6 @@ class Admin extends CI_Controller
         redirect('Admin/registration');
     }
 
-
-
     public function searchRegistrationByWard()
     {
 
@@ -579,6 +551,17 @@ class Admin extends CI_Controller
                 'is_delete' => 0,
                 'ward_no' => $this->input->post('ward_no')
             ]);
+
+            $housetypes = $this->Db_model->setTable('house_type')->get_all([
+                'is_delete' => 0,
+
+            ]);
+
+            $data['house_type'] = [];
+
+            foreach ($housetypes as $h) {
+                $data['house_type'][$h->id] = $h;
+            }
         }
         $this->load->view('admin/view_registration_by_ward', $data);
     }
@@ -810,8 +793,8 @@ class Admin extends CI_Controller
                     $h->open_land +
                     $h->opening_arrear_open_land +
                     $h->arv_water +
-                    $h->opening_arrear_water ;
-                    
+                    $h->opening_arrear_water;
+
 
                 $data = [
                     'user_id' => $h->id,
@@ -835,7 +818,7 @@ class Admin extends CI_Controller
 
                     'curr_arrear' => $h->arv + $h->opening_arrear,
                     'curr_advance' => 0,
-                    'curr_arrear_open_land' => $h->open_land + $h->opening_arrear_open_land ,
+                    'curr_arrear_open_land' => $h->open_land + $h->opening_arrear_open_land,
                     'curr_advance_open_land' => 0,
                     'curr_arrear_water' => $h->arv_water + $h->opening_arrear_water,
                     'curr_advance_water' => 0,
@@ -858,123 +841,6 @@ class Admin extends CI_Controller
 
                 $billno++;
                 $crn++;
-            }
-
-            $this->db->trans_complete();
-
-            if ($this->db->trans_status() === FALSE) {
-                $this->session->set_flashdata('error', 'डिमांड जनरेट करने में त्रुटि हुई।');
-            } else {
-                $this->session->set_flashdata('success', 'डिमांड सफलतापूर्वक जनरेट हुई।');
-            }
-
-            redirect('Admin/searchRegistrationByWardFin');
-        } else {
-            $this->session->set_flashdata('error', 'Invalid request');
-            redirect('Admin/searchRegistrationByWardFin');
-        }
-    }
-
-    public function saveDemand1()
-    {
-        if ($this->input->post()) {
-
-            $from = $this->input->post('from_date');
-            $to = $this->input->post('to_date');
-            echo $billno = $this->input->post('bill_no');
-
-            // die;
-
-            $houses = $this->Db_model->setTable('registrations')->get_all([
-                'is_delete' => 0,
-                'fin_year' => $this->input->post('fin_year_id'),
-                'ward_no' => $this->input->post('ward_no')
-            ]);
-
-            $fyj = $this->Db_model->setTable('fin_year')->get_row([
-                'is_delete' => 0,
-                'fin_year_id' => $this->input->post('fin_year_id'),
-            ]);
-
-            if (!$fyj) {
-                $this->session->set_flashdata('error', 'Financial year not found');
-                redirect('Admin/searchRegistrationByWardFin');
-            }
-
-            $fy = $fyj->fin_year;
-
-            list($start, $end) = explode('-', $fy);
-            $new_fy = ((int)$start + 1) . '-' . ((int)$end + 1);
-
-            $exists_new_fy = $this->db->where([
-                'fin_year' => $new_fy,
-                'is_delete' => 0
-            ])->get('fin_year')->row();
-
-            if (!$exists_new_fy) {
-                $this->session->set_flashdata('error', 'पहले अगला वित्तीय वर्ष जोड़े!');
-                redirect('Admin/searchRegistrationByWardFin');
-            }
-
-            $this->db->trans_start();
-
-            $bill_date = date('Y-m-d');
-
-            foreach ($houses as $h) {
-
-                $total_tax =
-                    $h->arv +
-                    $h->opening_arrear +
-                    $h->open_land +
-                    $h->opening_arrear_open_land +
-                    $h->arv_water +
-                    $h->opening_arrear_water;
-
-                $data = [
-                    'user_id' => $h->id,
-                    'crn' => $h->id,
-                    'unique_id' => $h->unique_id,
-                    'ward_no' => $h->ward_no,
-                    'fin_year' => $fy,
-                    'from_date' => $from,
-                    'to_date' => $to,
-                    'bill_date' => $bill_date,
-                    'billno' => $billno,
-
-                    'arv' => $h->arv,
-                    'opening_arrear' => $h->opening_arrear,
-                    'open_land' => $h->open_land,
-                    'opening_arrear_open_land' => $h->opening_arrear_open_land,
-                    'arv_water' => $h->arv_water,
-                    'opening_arrear_water' => $h->opening_arrear_water,
-
-                    'total_tax' => $total_tax,
-
-                    'curr_arrear' => $h->arv + $h->opening_arrear,
-                    'curr_advance' => 0,
-                    'curr_arrear_open_land' => $h->open_land + $h->opening_arrear_open_land,
-                    'curr_advance_open_land' => 0,
-                    'curr_arrear_water' => $h->arv_water + $h->opening_arrear_water,
-                    'curr_advance_water' => 0,
-
-                    'status' => 0,
-                    'method' => 0
-                ];
-
-
-                $this->Db_model->setTable('registrations')->update(
-                    ['id' => $h->id],
-                    [
-                        'fin_year' => $exists_new_fy->fin_year_id,
-                        'opening_arrear' => $h->arv + $h->opening_arrear,
-                        'opening_arrear_open_land' => $h->open_land + $h->opening_arrear_open_land,
-                        'opening_arrear_water' => $h->arv_water + $h->opening_arrear_water,
-                    ]
-                );
-
-                $this->Db_model->setTable('housetax_demand')->insert($data);
-
-                $billno++;
             }
 
             $this->db->trans_complete();
@@ -1107,7 +973,6 @@ class Admin extends CI_Controller
         $this->load->view('admin/paytax_form', $data);
     }
 
-
     public function savePaymentOffline()
     {
         if ($this->input->post()) {
@@ -1185,91 +1050,6 @@ class Admin extends CI_Controller
                     ]
                 );
             }
-
-
-            $data = [
-                'user_id' => $this->input->post('user_id'),
-
-                'house_tax' => $houseTax,
-                'paid_amount' => $paidHouse,
-                'arrear' => $arrearHouse,
-
-                'open_land' => $openLand,
-                'open_land_paid' => $paidOpenLand,
-                'open_land_arrear' => $arrearOpenLand,
-
-                'water_tax' => $waterTax,
-                'water_tax_paid' => $paidWater,
-                'water_tax_arrear' => $arrearWater,
-
-                'payment_id' => 'PAY' . time(),
-                'payment_date' => $this->input->post('payment_date'),
-                'billno' => $this->input->post('billno'),
-            ];
-
-            $insert = $this->Db_model->setTable('housetax_payment')->insert($data);
-
-            if ($insert) {
-                $this->session->set_flashdata('success', 'भुगतान सफलतापूर्वक दर्ज किया गया!');
-            } else {
-                $this->session->set_flashdata('error', 'भुगतान दर्ज करने में समस्या हुई!');
-            }
-        }
-
-        redirect('Admin/searchByWardFinPayTax');
-    }
-    public function savePaymentOffline1()
-    {
-        if ($this->input->post()) {
-
-            $demand = $this->Db_model->setTable('housetax_demand')->get_row([
-                'id' => $this->input->post('user_id'),
-                'status' => 0,
-            ]);
-
-            if (!$demand) {
-                $this->session->set_flashdata('error', 'मांग नही प्राप्त हुई!');
-                redirect('Admin/searchByWardFinPayTax');
-            }
-
-
-            $houseTax = (float) $this->input->post('house_tax');
-            $openLand = (float) $this->input->post('open_land');
-            $waterTax = (float) $this->input->post('water_tax');
-
-
-            $paidHouse = (float) $this->input->post('paid_amount');
-            $paidOpenLand = (float) $this->input->post('open_land_paid');
-            $paidWater = (float) $this->input->post('water_tax_paid');
-
-
-            $arrearHouse = $houseTax - $paidHouse;
-            $arrearOpenLand = $openLand - $paidOpenLand;
-            $arrearWater = $waterTax - $paidWater;
-
-
-            $arrearHouse = max(0, $arrearHouse);
-            $arrearOpenLand = max(0, $arrearOpenLand);
-            $arrearWater = max(0, $arrearWater);
-
-
-            $this->Db_model->setTable('registrations')->update(
-                ['id' => $demand->user_id],
-                [
-                    'opening_arrear' => $arrearHouse,
-                    'opening_arrear_open_land' => $arrearOpenLand,
-                    'opening_arrear_water' => $arrearWater,
-                ]
-            );
-
-
-            $this->Db_model->setTable('housetax_demand')->update(
-                ['id' => $this->input->post('user_id')],
-                [
-                    'status' => 1,
-                    'method' => 1,
-                ]
-            );
 
 
             $data = [
@@ -1451,7 +1231,7 @@ class Admin extends CI_Controller
         $this->load->view('admin/search_report_ward', $data);
     }
 
-    public function reportByWard()
+    public function reportByWard1()
     {
         if ($this->input->post()) {
             $ward_no = $this->input->post('ward_no');
@@ -1506,6 +1286,76 @@ class Admin extends CI_Controller
         }
     }
 
+    public function reportByWard()
+    {
+        if ($this->input->post()) {
+
+            $ward_no  = $this->input->post('ward_no');
+            $fin_year = $this->input->post('fin_year');
+
+            $this->db->select('
+            registrations.id,
+            registrations.name,
+            registrations.father_name,
+            registrations.house_number,
+            registrations.unique_id,
+            registrations.address,
+
+            ward.ward_name,
+            housetax_demand.fin_year,
+
+            (housetax_demand.arv + housetax_demand.opening_arrear) AS house_tax,
+            (housetax_demand.open_land + housetax_demand.opening_arrear_open_land) AS open_land,
+            (housetax_demand.arv_water + housetax_demand.opening_arrear_water) AS water_tax,
+
+            IFNULL(SUM(housetax_payment.paid_amount),0) AS paid_amount,
+            IFNULL(SUM(housetax_payment.open_land_paid),0) AS open_land_paid,
+            IFNULL(SUM(housetax_payment.water_tax_paid),0) AS water_tax_paid
+        ');
+
+            $this->db->from('housetax_demand');
+
+
+            $this->db->join(
+                'registrations',
+                'registrations.id = housetax_demand.user_id'
+            );
+
+
+            $this->db->join(
+                'ward',
+                'ward.ward_no = housetax_demand.ward_no',
+                'left'
+            );
+
+
+            $this->db->join(
+                'housetax_payment',
+                'housetax_payment.user_id = housetax_demand.id',
+                'left'
+            );
+
+
+            if (!empty($ward_no)) {
+                $this->db->where('housetax_demand.ward_no', $ward_no);
+            }
+
+            if (!empty($fin_year)) {
+                $this->db->where('housetax_demand.fin_year', $fin_year);
+            }
+
+
+            $this->db->group_by('housetax_demand.user_id, housetax_demand.fin_year');
+
+            $data['payments'] = $this->db->get()->result();
+
+            $this->load->view('admin/report_by_ward', $data);
+        } else {
+            $this->session->set_flashdata('error', 'समस्या हुई!');
+            redirect('Admin/searchReportByWard');
+        }
+    }
+
     public function searchReportByFinYear()
     {
 
@@ -1516,7 +1366,7 @@ class Admin extends CI_Controller
         $this->load->view('admin/search_report_fin', $data);
     }
 
-    public function reportByFin()
+    public function reportByFin1()
     {
         if ($this->input->post()) {
 
@@ -1569,12 +1419,77 @@ class Admin extends CI_Controller
         }
     }
 
+    public function reportByFin()
+    {
+        if ($this->input->post()) {
+
+            $fin_year = $this->input->post('fin_year');
+
+            $this->db->select('
+            registrations.id,
+            registrations.name,
+            registrations.father_name,
+            registrations.house_number,
+            registrations.unique_id,
+            registrations.address,
+
+            ward.ward_name,
+            housetax_demand.fin_year,
+
+            (housetax_demand.arv + housetax_demand.opening_arrear) AS house_tax,
+            (housetax_demand.open_land + housetax_demand.opening_arrear_open_land) AS open_land,
+            (housetax_demand.arv_water + housetax_demand.opening_arrear_water) AS water_tax,
+
+            IFNULL(SUM(housetax_payment.paid_amount),0) AS paid_amount,
+            IFNULL(SUM(housetax_payment.open_land_paid),0) AS open_land_paid,
+            IFNULL(SUM(housetax_payment.water_tax_paid),0) AS water_tax_paid
+        ');
+
+            $this->db->from('housetax_demand');
+
+
+            $this->db->join(
+                'registrations',
+                'registrations.id = housetax_demand.user_id'
+            );
+
+
+            $this->db->join(
+                'ward',
+                'ward.ward_no = housetax_demand.ward_no',
+                'left'
+            );
+
+
+            $this->db->join(
+                'housetax_payment',
+                'housetax_payment.user_id = housetax_demand.id',
+                'left'
+            );
+
+
+            if (!empty($fin_year)) {
+                $this->db->where('housetax_demand.fin_year', $fin_year);
+            }
+
+
+            $this->db->group_by('housetax_demand.user_id, housetax_demand.fin_year');
+
+            $data['payments'] = $this->db->get()->result();
+
+            $this->load->view('admin/report_by_fin', $data);
+        } else {
+            $this->session->set_flashdata('error', 'समस्या हुई!');
+            redirect('Admin/searchReportByFinYear');
+        }
+    }
+
     public function searchReportByDate()
     {
         $this->load->view('admin/search_report_date');
     }
 
-    public function reportByDate()
+    public function reportByDate1()
     {
         if ($this->input->post()) {
 
@@ -1629,5 +1544,183 @@ class Admin extends CI_Controller
             $this->session->set_flashdata('error', 'समस्या हुई!');
             redirect('Admin/searchReportByDate');
         }
+    }
+
+    public function reportByDate()
+    {
+        if ($this->input->post()) {
+
+            $from_date = $this->input->post('from_date');
+            $to_date   = $this->input->post('to_date');
+
+            $this->db->select('
+            registrations.id,
+            registrations.name,
+            registrations.father_name,
+            registrations.unique_id,
+
+            ward.ward_name,
+            housetax_demand.fin_year,
+
+            (housetax_demand.arv + housetax_demand.opening_arrear) AS house_tax,
+            (housetax_demand.open_land + housetax_demand.opening_arrear_open_land) AS open_land,
+            (housetax_demand.arv_water + housetax_demand.opening_arrear_water) AS water_tax,
+
+            IFNULL(SUM(housetax_payment.paid_amount),0) AS paid_amount,
+            IFNULL(SUM(housetax_payment.open_land_paid),0) AS open_land_paid,
+            IFNULL(SUM(housetax_payment.water_tax_paid),0) AS water_tax_paid
+        ');
+
+            $this->db->from('housetax_demand');
+
+            $this->db->join(
+                'registrations',
+                'registrations.id = housetax_demand.user_id'
+            );
+
+            $this->db->join(
+                'ward',
+                'ward.ward_no = housetax_demand.ward_no',
+                'left'
+            );
+
+
+            $this->db->join(
+                'housetax_payment',
+                'housetax_payment.user_id = housetax_demand.id',
+                'left'
+            );
+
+
+            if (!empty($from_date)) {
+                $this->db->where('housetax_payment.payment_date >=', $from_date);
+            }
+
+            if (!empty($to_date)) {
+                $this->db->where('housetax_payment.payment_date <=', $to_date);
+            }
+
+            $this->db->group_by('housetax_demand.user_id, housetax_demand.fin_year');
+
+            $data['payments'] = $this->db->get()->result();
+
+            $this->load->view('admin/report_by_date', $data);
+        } else {
+            $this->session->set_flashdata('error', 'समस्या हुई!');
+            redirect('Admin/searchReportByDate');
+        }
+    }
+
+    public function ledgerProfile1()
+    {
+
+        $this->load->view('admin/ledger_profile');
+    }
+
+    public function ledgerProfile($id = 1)
+    {
+        $data['user'] = $this->Db_model->setTable('registrations')->get_row([
+            'is_delete' => 0,
+            'id' => $id
+        ]);
+
+        $this->load->view('admin/ledger_profile', $data);
+    }
+
+    public function ourLeaders()
+    {
+        $data['leaders'] = $this->db
+            ->order_by('id', 'DESC')
+            ->get('leader')
+            ->result();
+
+        $this->load->view('admin/our_leaders', $data);
+    }
+
+    public function saveLeader()
+    {
+        $leader_title = $this->input->post('leader_title');
+
+        $leader_file = '';
+
+        if (!empty($_FILES['leader_file']['name'])) {
+            $config['upload_path']   = './assets/uploads/our_leaders/';
+            $config['allowed_types'] = 'jpg|jpeg|png|webp';
+            $config['encrypt_name']  = TRUE;
+
+            if (!is_dir($config['upload_path'])) {
+                mkdir($config['upload_path'], 0777, true);
+            }
+
+            $this->load->library('upload', $config);
+
+            if ($this->upload->do_upload('leader_file')) {
+                $uploadData = $this->upload->data();
+                $leader_file = $uploadData['file_name'];
+            }
+        }
+
+        $data = array(
+            'leader_title' => $leader_title,
+            'leader_file'  => $leader_file
+        );
+
+        $this->db->insert('leader', $data);
+
+        redirect('Admin/ourLeaders');
+    }
+
+    public function updateLeader()
+    {
+        $id           = $this->input->post('id');
+        $leader_title = $this->input->post('leader_title');
+
+        $data = array(
+            'leader_title' => $leader_title
+        );
+
+        if (!empty($_FILES['leader_file']['name'])) {
+            $old = $this->db
+                ->get_where('leader', array('id' => $id))
+                ->row();
+
+            if ($old && !empty($old->leader_file)) {
+                @unlink('./assets/uploads/our_leaders/' . $old->leader_file);
+            }
+
+            $config['upload_path']   = './assets/uploads/our_leaders/';
+            $config['allowed_types'] = 'jpg|jpeg|png|webp';
+            $config['encrypt_name']  = TRUE;
+
+            $this->load->library('upload', $config);
+
+            if ($this->upload->do_upload('leader_file')) {
+                $uploadData = $this->upload->data();
+
+                $data['leader_file'] = $uploadData['file_name'];
+            }
+        }
+
+        $this->db->where('id', $id);
+        $this->db->update('leader', $data);
+
+        redirect('Admin/ourLeaders');
+    }
+
+    public function deleteLeader($id)
+    {
+        $row = $this->db
+            ->get_where('leader', array('id' => $id))
+            ->row();
+
+        if ($row) {
+            if (!empty($row->leader_file)) {
+                @unlink('./assets/uploads/our_leaders/' . $row->leader_file);
+            }
+
+            $this->db->delete('leader', array('id' => $id));
+        }
+
+        redirect('Admin/ourLeaders');
     }
 }
