@@ -1,0 +1,84 @@
+/* =========================
+        BUDGET PAGE
+========================= */
+
+.budget-section{
+    background:#FFF9F4;
+}
+
+/* SUMMARY CARDS */
+
+.budget-card{
+    background:#fff;
+    padding:30px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.budget-card i{
+    font-size:35px;
+    margin-bottom:10px;
+    color:var(--primary);
+}
+
+.budget-card h3{
+    color:var(--primary);
+    font-weight:800;
+}
+
+.budget-card:hover{
+    transform:translateY(-10px);
+}
+
+/* BOX */
+
+.budget-box{
+    background:#fff;
+    padding:25px;
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+}
+
+.budget-box h4{
+    margin-bottom:20px;
+    color:var(--primary);
+}
+
+/* ITEMS */
+
+.budget-item{
+    margin-bottom:15px;
+}
+
+.budget-item span{
+    font-weight:600;
+    display:block;
+    margin-bottom:5px;
+}
+
+/* PROGRESS */
+
+.progress{
+    height:10px;
+    border-radius:20px;
+}
+
+.progress-bar{
+    background:var(--primary);
+}
+
+/* TABLE */
+
+.budget-table{
+    background:#fff;
+    padding:25px;
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+}
+
+.table th{
+    background:var(--primary);
+    color:#fff;
+}

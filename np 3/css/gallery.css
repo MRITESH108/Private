@@ -1,0 +1,79 @@
+/* =========================
+        GALLERY PAGE
+========================= */
+
+.gallery-section{
+    background:#FFF9F4;
+}
+
+/* FILTER BUTTONS */
+
+.btn-filter{
+    background:#fff;
+    border:1px solid #ddd;
+    margin:5px;
+    padding:8px 18px;
+    border-radius:30px;
+    font-weight:600;
+    color:var(--primary);
+    transition:.3s;
+}
+
+.btn-filter:hover,
+.btn-filter.active{
+    background:var(--primary);
+    color:#fff;
+}
+
+/* ITEMS */
+
+.gallery-item{
+    position:relative;
+    overflow:hidden;
+    border-radius:18px;
+    transition:.3s;
+}
+
+.gallery-item img{
+    width:100%;
+    height:260px;
+    object-fit:cover;
+    transition:.4s;
+}
+
+.gallery-item .overlay{
+    position:absolute;
+    inset:0;
+    background:rgba(139,30,63,.6);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    opacity:0;
+    transition:.3s;
+}
+
+.gallery-item:hover img{
+    transform:scale(1.1);
+}
+
+.gallery-item:hover .overlay{
+    opacity:1;
+}
+
+.video-overlay i{
+    font-size:55px;
+    color:#fff;
+}
+
+
+@media(max-width:768px){
+
+.gallery-item img{
+    height:220px;
+}
+
+.video-overlay i{
+    font-size:40px;
+}
+
+}

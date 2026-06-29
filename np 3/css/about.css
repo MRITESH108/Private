@@ -1,0 +1,118 @@
+/* =========================
+        PAGE HEADER
+========================= */
+
+.page-header{
+    background:linear-gradient(135deg,#8B1E3F,#A1284A);
+    color:#fff;
+    padding:80px 0;
+}
+
+.page-header h1{
+    font-size:42px;
+    font-weight:700;
+}
+
+.breadcrumb a{
+    color:#FFD66B;
+    text-decoration:none;
+}
+
+.breadcrumb span{
+    color:#fff;
+    margin:0 5px;
+}
+
+/* =========================
+        ABOUT INTRO
+========================= */
+
+.about-intro h2{
+    color:var(--primary);
+    font-weight:700;
+}
+
+/* =========================
+        MISSION VISION
+========================= */
+
+.mission-card,
+.vision-card{
+    background:#fff;
+    padding:35px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 15px 35px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.mission-card i,
+.vision-card i{
+    font-size:40px;
+    color:var(--primary);
+    margin-bottom:15px;
+}
+
+/* =========================
+        STATISTICS
+========================= */
+
+.stat-box{
+    background:#FFF9F4;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,.05);
+}
+
+.stat-box h2{
+    color:var(--primary);
+    font-weight:800;
+}
+
+/* =========================
+        TIMELINE
+========================= */
+
+.timeline{
+    position:relative;
+    max-width:700px;
+    margin:auto;
+}
+
+.timeline::before{
+    content:"";
+    position:absolute;
+    left:50%;
+    width:3px;
+    height:100%;
+    background:var(--primary);
+    transform:translateX(-50%);
+}
+
+.timeline-item{
+    width:50%;
+    padding:20px;
+    position:relative;
+}
+
+.timeline-item:nth-child(odd){
+    left:0;
+    text-align:right;
+}
+
+.timeline-item:nth-child(even){
+    left:50%;
+}
+
+.timeline-item h5{
+    color:var(--primary);
+    font-weight:700;
+}
+
+/* =========================
+        CTA
+========================= */
+
+.cta-section{
+    background:linear-gradient(135deg,#FFF9F4,#FDEBD0);
+}

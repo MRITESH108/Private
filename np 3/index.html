@@ -1,0 +1,1659 @@
+<!DOCTYPE html>
+<html lang="hi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>नगर पंचायत</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" rel="stylesheet">
+
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+    <!-- Swiper Slider -->
+    <link href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Google Font (Hindi) -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+    <!-- ==========================
+        TOP BAR START
+=========================== -->
+
+<div class="top-bar d-none d-lg-block">
+    <div class="container">
+        <div class="row align-items-center">
+
+            <!-- Left -->
+            <div class="col-lg-6">
+                <div class="top-info">
+
+                    <span>
+                        <i class="bi bi-geo-alt-fill"></i>
+                        नगर पंचायत, उत्तर प्रदेश
+                    </span>
+
+                    <span>
+                        <i class="bi bi-clock-fill"></i>
+                        सोम - शनि : 10:00 AM - 5:00 PM
+                    </span>
+
+                </div>
+            </div>
+
+            <!-- Right -->
+            <div class="col-lg-6">
+
+                <div class="top-links">
+
+                    <a href="#">
+                        <i class="bi bi-telephone-fill"></i>
+                        +91 9876543210
+                    </a>
+
+                    <a href="#">
+                        <i class="bi bi-envelope-fill"></i>
+                        info@nagarpanchayat.in
+                    </a>
+
+                    <a href="#">
+                        <i class="bi bi-facebook"></i>
+                    </a>
+
+                    <a href="#">
+                        <i class="bi bi-twitter-x"></i>
+                    </a>
+
+                    <a href="#">
+                        <i class="bi bi-youtube"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- ==========================
+        TOP BAR END
+=========================== -->
+
+
+    <!-- ==========================
+        NAVBAR START
+=========================== -->
+
+<nav class="navbar navbar-expand-xl sticky-top custom-navbar">
+    <div class="container">
+
+        <!-- Logo -->
+        <a class="navbar-brand d-flex align-items-center" href="#">
+
+            <img src="images/logo.png" alt="Logo">
+
+            <div class="logo-text ms-3">
+                <h5>नगर पंचायत</h5>
+                <span>उत्तर प्रदेश</span>
+            </div>
+
+        </a>
+
+        <!-- Mobile Toggle -->
+
+        <button class="navbar-toggler shadow-none border-0"
+                type="button"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#mobileMenu">
+
+            <i class="bi bi-list"></i>
+
+        </button>
+
+        <!-- Desktop Menu -->
+
+        <div class="collapse navbar-collapse justify-content-end">
+
+            <ul class="navbar-nav align-items-xl-center">
+
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">मुख्य पृष्ठ</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="about.html">हमारे बारे में</a>
+                </li>
+
+                <li class="nav-item dropdown">
+
+                    <a class="nav-link dropdown-toggle"
+                       href="#"
+                       data-bs-toggle="dropdown">
+
+                        सेवाएँ
+
+                    </a>
+
+                    <ul class="dropdown-menu">
+
+                        <li><a class="dropdown-item" href="#">जन्म प्रमाण पत्र</a></li>
+
+                        <li><a class="dropdown-item" href="#">मृत्यु प्रमाण पत्र</a></li>
+
+                        <li><a class="dropdown-item" href="#">गृहकर</a></li>
+
+                        <li><a class="dropdown-item" href="budget.html">ऑनलाइन शिकायत</a></li>
+
+                    </ul>
+
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="tenders.html">सूचनाएँ</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="gallery.html">गैलरी</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">संपर्क करें</a>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+</nav>
+
+<!-- Mobile Offcanvas -->
+
+<div class="offcanvas offcanvas-end"
+     tabindex="-1"
+     id="mobileMenu">
+
+    <div class="offcanvas-header">
+
+        <h5 class="fw-bold text-uppercase">
+            नगर पंचायत
+        </h5>
+
+        <button class="btn-close"
+                data-bs-dismiss="offcanvas"></button>
+
+    </div>
+
+    <div class="offcanvas-body">
+
+        <ul class="navbar-nav">
+
+            <li class="nav-item">
+                <a class="nav-link" href="#">मुख्य पृष्ठ</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="#">हमारे बारे में</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="#">सेवाएँ</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="#">सूचनाएँ</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="#">गैलरी</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="#">संपर्क करें</a>
+            </li>
+
+        </ul>
+
+    </div>
+
+</div>
+
+<!-- ==========================
+        NAVBAR END
+=========================== -->
+
+
+    <!--==========================
+        HERO SECTION
+===========================-->
+
+<section class="hero-section">
+
+    <div class="swiper heroSwiper">
+
+        <div class="swiper-wrapper">
+
+            <!-- Slide 1 -->
+
+            <div class="swiper-slide">
+
+                <img src="images/slider/slide1.jpg" alt="">
+
+                <div class="overlay"></div>
+
+                <div class="container">
+
+                    <div class="hero-content">
+
+                        <span data-aos="fade-down">
+                            उत्तर प्रदेश सरकार
+                        </span>
+
+                        <h1 data-aos="fade-up">
+                            नगर पंचायत में आपका हार्दिक स्वागत है
+                        </h1>
+
+                        <p data-aos="fade-up" data-aos-delay="200">
+                            स्वच्छ नगर • सुरक्षित नगर • विकसित नगर
+                        </p>
+
+                        <div class="hero-btns" data-aos="zoom-in" data-aos-delay="400">
+
+                            <a href="#" class="btn btn-main">
+                                हमारी सेवाएँ
+                            </a>
+
+                            <a href="#" class="btn btn-outline-light">
+                                संपर्क करें
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Slide 2 -->
+
+            <div class="swiper-slide">
+
+                <img src="images/slider/slide2.jpg" alt="">
+
+                <div class="overlay"></div>
+
+                <div class="container">
+
+                    <div class="hero-content">
+
+                        <span>जनसेवा ही हमारा उद्देश्य</span>
+
+                        <h1>
+                            डिजिटल नगर पंचायत
+                        </h1>
+
+                        <p>
+                            सभी सेवाएँ अब ऑनलाइन उपलब्ध
+                        </p>
+
+                        <div class="hero-btns">
+
+                            <a href="#" class="btn btn-main">
+                                ऑनलाइन सेवाएँ
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Slide 3 -->
+
+            <div class="swiper-slide">
+
+                <img src="images/slider/slide3.jpg" alt="">
+
+                <div class="overlay"></div>
+
+                <div class="container">
+
+                    <div class="hero-content">
+
+                        <span>सशक्त नगर</span>
+
+                        <h1>
+                            आपके सहयोग से विकास
+                        </h1>
+
+                        <p>
+                            नागरिक सुविधाओं के लिए समर्पित
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="swiper-pagination"></div>
+
+        <div class="swiper-button-next"></div>
+
+        <div class="swiper-button-prev"></div>
+
+    </div>
+
+</section>
+
+
+    <!--=================================
+        LATEST NOTIFICATIONS
+==================================-->
+
+<section class="notice-section py-5">
+
+    <div class="container">
+
+        <div class="row g-4 align-items-center">
+
+            <!-- Left Side -->
+
+            <div class="col-lg-4">
+
+                <div class="notice-title" data-aos="fade-right">
+
+                    <span class="badge-title">
+                        <i class="bi bi-megaphone-fill"></i>
+                        नवीनतम सूचनाएँ
+                    </span>
+
+                    <h2>
+                        महत्वपूर्ण घोषणाएँ
+                    </h2>
+
+                    <p>
+                        नगर पंचायत द्वारा जारी नवीनतम सूचनाएँ, निविदाएँ एवं
+                        नागरिक सेवाओं से संबंधित महत्वपूर्ण जानकारी।
+                    </p>
+
+                    <a href="#" class="btn btn-main mt-3">
+                        सभी सूचनाएँ
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- Right Side -->
+
+            <div class="col-lg-8">
+
+                <div class="notice-box" data-aos="fade-left">
+
+                    <div class="notice-scroll">
+
+                        <div class="notice-item">
+
+                            <div class="notice-date">
+                                <span>28</span>
+                                <small>JUN</small>
+                            </div>
+
+                            <div class="notice-content">
+
+                                <h5>
+                                    गृहकर जमा करने की अंतिम तिथि बढ़ाई गई।
+                                </h5>
+
+                                <p>
+                                    नागरिकों की सुविधा हेतु अंतिम तिथि
+                                    15 जुलाई तक बढ़ा दी गई है।
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <div class="notice-item">
+
+                            <div class="notice-date">
+                                <span>25</span>
+                                <small>JUN</small>
+                            </div>
+
+                            <div class="notice-content">
+
+                                <h5>
+                                    प्रधानमंत्री आवास योजना हेतु आवेदन।
+                                </h5>
+
+                                <p>
+                                    पात्र नागरिक ऑनलाइन आवेदन कर सकते हैं।
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <div class="notice-item">
+
+                            <div class="notice-date">
+                                <span>21</span>
+                                <small>JUN</small>
+                            </div>
+
+                            <div class="notice-content">
+
+                                <h5>
+                                    सफाई अभियान 2026
+                                </h5>
+
+                                <p>
+                                    सभी वार्डों में विशेष सफाई अभियान चलाया जाएगा।
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <div class="notice-item">
+
+                            <div class="notice-date">
+                                <span>15</span>
+                                <small>JUN</small>
+                            </div>
+
+                            <div class="notice-content">
+
+                                <h5>
+                                    जलकर भुगतान ऑनलाइन उपलब्ध।
+                                </h5>
+
+                                <p>
+                                    अब नागरिक घर बैठे ऑनलाइन भुगतान कर सकते हैं।
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+    <!--=================================
+        IMPORTANT LINKS
+==================================-->
+
+<section class="important-links py-5">
+
+    <div class="container">
+
+        <!-- Section Title -->
+
+        <div class="section-title text-center mb-5" data-aos="fade-up">
+
+            <span class="section-tag">
+                त्वरित सेवाएँ
+            </span>
+
+            <h2>
+                महत्वपूर्ण लिंक
+            </h2>
+
+            <p>
+                नागरिक सुविधाओं एवं ऑनलाइन सेवाओं के लिए महत्वपूर्ण लिंक।
+            </p>
+
+        </div>
+
+        <div class="row g-4">
+
+            <div class="col-lg-3 col-md-6" data-aos="zoom-in">
+                <a href="#" class="link-card">
+
+                    <div class="icon-box">
+                        <i class="bi bi-file-earmark-text-fill"></i>
+                    </div>
+
+                    <h5>जन्म प्रमाण पत्र</h5>
+
+                    <span>ऑनलाइन आवेदन</span>
+
+                </a>
+            </div>
+
+            <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="100">
+                <a href="#" class="link-card">
+
+                    <div class="icon-box">
+                        <i class="bi bi-file-earmark-medical-fill"></i>
+                    </div>
+
+                    <h5>मृत्यु प्रमाण पत्र</h5>
+
+                    <span>ऑनलाइन आवेदन</span>
+
+                </a>
+            </div>
+
+            <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="200">
+                <a href="#" class="link-card">
+
+                    <div class="icon-box">
+                        <i class="bi bi-house-check-fill"></i>
+                    </div>
+
+                    <h5>गृहकर भुगतान</h5>
+
+                    <span>ऑनलाइन भुगतान</span>
+
+                </a>
+            </div>
+
+            <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="300">
+                <a href="#" class="link-card">
+
+                    <div class="icon-box">
+                        <i class="bi bi-droplet-half"></i>
+                    </div>
+
+                    <h5>जलकर भुगतान</h5>
+
+                    <span>ऑनलाइन भुगतान</span>
+
+                </a>
+            </div>
+
+            <div class="col-lg-3 col-md-6" data-aos="zoom-in">
+                <a href="#" class="link-card">
+
+                    <div class="icon-box">
+                        <i class="bi bi-chat-left-dots-fill"></i>
+                    </div>
+
+                    <h5>ऑनलाइन शिकायत</h5>
+
+                    <span>अपनी शिकायत दर्ज करें</span>
+
+                </a>
+            </div>
+
+            <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="100">
+                <a href="#" class="link-card">
+
+                    <div class="icon-box">
+                        <i class="bi bi-megaphone-fill"></i>
+                    </div>
+
+                    <h5>निविदाएँ</h5>
+
+                    <span>सभी निविदाएँ देखें</span>
+
+                </a>
+            </div>
+
+            <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="200">
+                <a href="#" class="link-card">
+
+                    <div class="icon-box">
+                        <i class="bi bi-download"></i>
+                    </div>
+
+                    <h5>डाउनलोड</h5>
+
+                    <span>महत्वपूर्ण दस्तावेज़</span>
+
+                </a>
+            </div>
+
+            <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="300">
+                <a href="#" class="link-card">
+
+                    <div class="icon-box">
+                        <i class="bi bi-person-lines-fill"></i>
+                    </div>
+
+                    <h5>संपर्क अधिकारी</h5>
+
+                    <span>अधिक जानकारी</span>
+
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+    <!--=================================
+        ABOUT SECTION
+==================================-->
+
+<section class="about-section py-5">
+
+    <div class="container">
+
+        <div class="row align-items-center g-5">
+
+            <!-- Image -->
+
+            <div class="col-lg-6" data-aos="fade-right">
+
+                <div class="about-image">
+
+                    <img src="images/about.jpg"
+                         class="img-fluid rounded-4"
+                         alt="नगर पंचायत">
+
+                    <div class="experience-box">
+
+                        <h3>25+</h3>
+
+                        <span>वर्षों की जनसेवा</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Content -->
+
+            <div class="col-lg-6" data-aos="fade-left">
+
+                <span class="section-tag">
+                    हमारे बारे में
+                </span>
+
+                <h2 class="about-title mt-3">
+                    नगर पंचायत के बारे में
+                </h2>
+
+                <p class="about-text">
+
+                    नगर पंचायत अपने नागरिकों को बेहतर नागरिक सुविधाएँ,
+                    स्वच्छ वातावरण तथा पारदर्शी प्रशासन उपलब्ध कराने के लिए
+                    निरंतर कार्यरत है। हमारा उद्देश्य प्रत्येक नागरिक तक
+                    गुणवत्तापूर्ण सेवाएँ समय पर पहुँचाना तथा नगर के
+                    समग्र विकास को सुनिश्चित करना है।
+
+                </p>
+
+                <p class="about-text">
+
+                    डिजिटल सेवाओं, स्वच्छता, पेयजल, प्रकाश व्यवस्था,
+                    कर संग्रह एवं जनकल्याणकारी योजनाओं के माध्यम से
+                    नगर पंचायत नागरिकों के जीवन स्तर को बेहतर बनाने के लिए
+                    प्रतिबद्ध है।
+
+                </p>
+
+                <a href="#" class="btn btn-main mt-3">
+                    और जानें
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- Statistics -->
+
+        <div class="row mt-5 g-4">
+
+            <div class="col-lg-3 col-md-6" data-aos="zoom-in">
+
+                <div class="counter-box">
+
+                    <i class="bi bi-people-fill"></i>
+
+                    <h3>50,000+</h3>
+
+                    <p>जनसंख्या</p>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="100">
+
+                <div class="counter-box">
+
+                    <i class="bi bi-buildings-fill"></i>
+
+                    <h3>15</h3>
+
+                    <p>वार्ड</p>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="200">
+
+                <div class="counter-box">
+
+                    <i class="bi bi-award-fill"></i>
+
+                    <h3>120+</h3>
+
+                    <p>विकास परियोजनाएँ</p>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="300">
+
+                <div class="counter-box">
+
+                    <i class="bi bi-check-circle-fill"></i>
+
+                    <h3>100%</h3>
+
+                    <p>जनसेवा</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+    <!--=================================
+    HON'BLE LEADERS SECTION
+==================================-->
+
+<section class="leaders-section py-5">
+
+    <div class="container">
+
+        <!-- Section Title -->
+
+        <div class="section-title text-center mb-5" data-aos="fade-up">
+
+            <span class="section-tag">
+                जनप्रतिनिधि एवं अधिकारी
+            </span>
+
+            <h2>
+                हमारे सम्माननीय जनप्रतिनिधि
+            </h2>
+
+            <p>
+                नगर पंचायत के विकास एवं नागरिक सेवाओं के लिए समर्पित नेतृत्व।
+            </p>
+
+        </div>
+
+        <div class="row justify-content-center g-4">
+
+            <!-- Card -->
+
+            <div class="col-lg-4 col-md-6" data-aos="fade-up">
+
+                <div class="leader-card">
+
+                    <div class="leader-image">
+
+                        <img src="images/leaders/chairman.jpg" alt="">
+
+                    </div>
+
+                    <div class="leader-body">
+
+                        <span class="designation">
+                            अध्यक्ष
+                        </span>
+
+                        <h4>
+                            श्री राम कुमार
+                        </h4>
+
+                        <p>
+                            नगर पंचायत अध्यक्ष
+                        </p>
+
+                        <div class="leader-social">
+
+                            <a href="#">
+                                <i class="bi bi-telephone-fill"></i>
+                            </a>
+
+                            <a href="#">
+                                <i class="bi bi-envelope-fill"></i>
+                            </a>
+
+                            <a href="#">
+                                <i class="bi bi-person-vcard-fill"></i>
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Card -->
+
+            <div class="col-lg-4 col-md-6"
+                 data-aos="fade-up"
+                 data-aos-delay="150">
+
+                <div class="leader-card">
+
+                    <div class="leader-image">
+
+                        <img src="images/leaders/eo.jpg" alt="">
+
+                    </div>
+
+                    <div class="leader-body">
+
+                        <span class="designation">
+                            अधिशासी अधिकारी
+                        </span>
+
+                        <h4>
+                            श्री अमित सिंह
+                        </h4>
+
+                        <p>
+                            Executive Officer
+                        </p>
+
+                        <div class="leader-social">
+
+                            <a href="#">
+                                <i class="bi bi-telephone-fill"></i>
+                            </a>
+
+                            <a href="#">
+                                <i class="bi bi-envelope-fill"></i>
+                            </a>
+
+                            <a href="#">
+                                <i class="bi bi-person-vcard-fill"></i>
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Card -->
+
+            <div class="col-lg-4 col-md-6"
+                 data-aos="fade-up"
+                 data-aos-delay="300">
+
+                <div class="leader-card">
+
+                    <div class="leader-image">
+
+                        <img src="images/leaders/member.jpg" alt="">
+
+                    </div>
+
+                    <div class="leader-body">
+
+                        <span class="designation">
+                            उपाध्यक्ष
+                        </span>
+
+                        <h4>
+                            श्रीमती सीमा देवी
+                        </h4>
+
+                        <p>
+                            नगर पंचायत
+                        </p>
+
+                        <div class="leader-social">
+
+                            <a href="#">
+                                <i class="bi bi-telephone-fill"></i>
+                            </a>
+
+                            <a href="#">
+                                <i class="bi bi-envelope-fill"></i>
+                            </a>
+
+                            <a href="#">
+                                <i class="bi bi-person-vcard-fill"></i>
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+    <!--=================================
+        CITIZEN SERVICES
+==================================-->
+
+<section class="services-section py-5">
+
+    <div class="container">
+
+        <!-- Section Title -->
+
+        <div class="section-title text-center mb-5" data-aos="fade-up">
+
+            <span class="section-tag">
+                नागरिक सेवाएँ
+            </span>
+
+            <h2>
+                उपलब्ध सेवाएँ
+            </h2>
+
+            <p>
+                नगर पंचायत द्वारा प्रदान की जाने वाली प्रमुख नागरिक सेवाएँ।
+            </p>
+
+        </div>
+
+        <div class="row g-4">
+
+            <!-- Card -->
+
+            <div class="col-lg-3 col-md-6" data-aos="zoom-in">
+
+                <div class="service-card">
+
+                    <div class="icon-box">
+                        <i class="bi bi-person-vcard-fill"></i>
+                    </div>
+
+                    <h5>जन्म प्रमाण पत्र</h5>
+
+                    <p>ऑनलाइन आवेदन एवं डाउनलोड सेवा</p>
+
+                    <a href="#" class="service-btn">
+                        आवेदन करें
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- Card -->
+
+            <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="100">
+
+                <div class="service-card">
+
+                    <div class="icon-box">
+                        <i class="bi bi-file-earmark-medical-fill"></i>
+                    </div>
+
+                    <h5>मृत्यु प्रमाण पत्र</h5>
+
+                    <p>त्वरित ऑनलाइन प्रमाण पत्र सेवा</p>
+
+                    <a href="#" class="service-btn">
+                        आवेदन करें
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- Card -->
+
+            <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="200">
+
+                <div class="service-card">
+
+                    <div class="icon-box">
+                        <i class="bi bi-house-door-fill"></i>
+                    </div>
+
+                    <h5>गृहकर भुगतान</h5>
+
+                    <p>सुरक्षित ऑनलाइन कर भुगतान</p>
+
+                    <a href="#" class="service-btn">
+                        भुगतान करें
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- Card -->
+
+            <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="300">
+
+                <div class="service-card">
+
+                    <div class="icon-box">
+                        <i class="bi bi-droplet-half"></i>
+                    </div>
+
+                    <h5>जलकर भुगतान</h5>
+
+                    <p>घर बैठे जलकर का भुगतान करें</p>
+
+                    <a href="#" class="service-btn">
+                        भुगतान करें
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- Card -->
+
+            <div class="col-lg-3 col-md-6" data-aos="zoom-in">
+
+                <div class="service-card">
+
+                    <div class="icon-box">
+                        <i class="bi bi-chat-dots-fill"></i>
+                    </div>
+
+                    <h5>ऑनलाइन शिकायत</h5>
+
+                    <p>अपनी समस्या दर्ज करें</p>
+
+                    <a href="#" class="service-btn">
+                        दर्ज करें
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- Card -->
+
+            <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="100">
+
+                <div class="service-card">
+
+                    <div class="icon-box">
+                        <i class="bi bi-megaphone-fill"></i>
+                    </div>
+
+                    <h5>निविदाएँ</h5>
+
+                    <p>सभी सरकारी निविदाएँ देखें</p>
+
+                    <a href="#" class="service-btn">
+                        देखें
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- Card -->
+
+            <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="200">
+
+                <div class="service-card">
+
+                    <div class="icon-box">
+                        <i class="bi bi-download"></i>
+                    </div>
+
+                    <h5>डाउनलोड</h5>
+
+                    <p>आवश्यक फॉर्म एवं दस्तावेज़</p>
+
+                    <a href="#" class="service-btn">
+                        डाउनलोड
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- Card -->
+
+            <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="300">
+
+                <div class="service-card">
+
+                    <div class="icon-box">
+                        <i class="bi bi-telephone-fill"></i>
+                    </div>
+
+                    <h5>संपर्क सहायता</h5>
+
+                    <p>अधिक जानकारी के लिए संपर्क करें</p>
+
+                    <a href="#" class="service-btn">
+                        संपर्क करें
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+    <!--=================================
+        GALLERY SECTION
+==================================-->
+
+<section class="gallery-section py-5">
+
+    <div class="container">
+
+        <!-- Title -->
+
+        <div class="section-title text-center mb-5" data-aos="fade-up">
+
+            <span class="section-tag">
+                हमारी गैलरी
+            </span>
+
+            <h2>
+                विकास कार्य एवं गतिविधियाँ
+            </h2>
+
+            <p>
+                नगर पंचायत द्वारा किए गए कार्यों एवं कार्यक्रमों की झलकियाँ।
+            </p>
+
+        </div>
+
+        <!-- Gallery Grid -->
+
+        <div class="row g-3">
+
+            <!-- Item -->
+
+            <div class="col-lg-4 col-md-6" data-aos="zoom-in">
+
+                <a href="images/gallery/1.jpg"
+                   class="gallery-item glightbox">
+
+                    <img src="images/gallery/1.jpg" alt="">
+
+                    <div class="overlay">
+                        <i class="bi bi-arrows-fullscreen"></i>
+                    </div>
+
+                </a>
+
+            </div>
+
+            <!-- Item -->
+
+            <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="100">
+
+                <a href="images/gallery/2.jpg"
+                   class="gallery-item glightbox">
+
+                    <img src="images/gallery/2.jpg" alt="">
+
+                    <div class="overlay">
+                        <i class="bi bi-arrows-fullscreen"></i>
+                    </div>
+
+                </a>
+
+            </div>
+
+            <!-- Item -->
+
+            <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="200">
+
+                <a href="images/gallery/3.jpg"
+                   class="gallery-item glightbox">
+
+                    <img src="images/gallery/3.jpg" alt="">
+
+                    <div class="overlay">
+                        <i class="bi bi-arrows-fullscreen"></i>
+                    </div>
+
+                </a>
+
+            </div>
+
+            <!-- Item -->
+
+            <div class="col-lg-4 col-md-6" data-aos="zoom-in">
+
+                <a href="images/gallery/4.jpg"
+                   class="gallery-item glightbox">
+
+                    <img src="images/gallery/4.jpg" alt="">
+
+                    <div class="overlay">
+                        <i class="bi bi-arrows-fullscreen"></i>
+                    </div>
+
+                </a>
+
+            </div>
+
+            <!-- Item -->
+
+            <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="100">
+
+                <a href="images/gallery/5.jpg"
+                   class="gallery-item glightbox">
+
+                    <img src="images/gallery/5.jpg" alt="">
+
+                    <div class="overlay">
+                        <i class="bi bi-arrows-fullscreen"></i>
+                    </div>
+
+                </a>
+
+            </div>
+
+            <!-- Item -->
+
+            <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="200">
+
+                <a href="images/gallery/6.jpg"
+                   class="gallery-item glightbox">
+
+                    <img src="images/gallery/6.jpg" alt="">
+
+                    <div class="overlay">
+                        <i class="bi bi-arrows-fullscreen"></i>
+                    </div>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+    <!--=================================
+        CONTACT SECTION
+==================================-->
+
+<section class="contact-section py-5">
+
+    <div class="container">
+
+        <!-- Title -->
+
+        <div class="section-title text-center mb-5" data-aos="fade-up">
+
+            <span class="section-tag">
+                संपर्क करें
+            </span>
+
+            <h2>
+                हमसे जुड़ें
+            </h2>
+
+            <p>
+                किसी भी जानकारी या शिकायत के लिए नगर पंचायत कार्यालय से संपर्क करें।
+            </p>
+
+        </div>
+
+        <div class="row g-4">
+
+            <!-- Contact Info -->
+
+            <div class="col-lg-5" data-aos="fade-right">
+
+                <div class="contact-info">
+
+                    <div class="info-box">
+
+                        <i class="bi bi-geo-alt-fill"></i>
+
+                        <div>
+                            <h5>पता</h5>
+                            <p>नगर पंचायत कार्यालय, उत्तर प्रदेश</p>
+                        </div>
+
+                    </div>
+
+                    <div class="info-box">
+
+                        <i class="bi bi-telephone-fill"></i>
+
+                        <div>
+                            <h5>फोन</h5>
+                            <p>+91 9876543210</p>
+                        </div>
+
+                    </div>
+
+                    <div class="info-box">
+
+                        <i class="bi bi-envelope-fill"></i>
+
+                        <div>
+                            <h5>ईमेल</h5>
+                            <p>info@nagarpanchayat.in</p>
+                        </div>
+
+                    </div>
+
+                    <div class="info-box">
+
+                        <i class="bi bi-clock-fill"></i>
+
+                        <div>
+                            <h5>कार्यालय समय</h5>
+                            <p>सोमवार - शनिवार : 10:00 AM - 5:00 PM</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Contact Form -->
+
+            <div class="col-lg-7" data-aos="fade-left">
+
+                <div class="contact-form">
+
+                    <form>
+
+                        <div class="row g-3">
+
+                            <div class="col-md-6">
+
+                                <input type="text"
+                                       class="form-control"
+                                       placeholder="आपका नाम">
+
+                            </div>
+
+                            <div class="col-md-6">
+
+                                <input type="email"
+                                       class="form-control"
+                                       placeholder="ईमेल">
+
+                            </div>
+
+                            <div class="col-md-6">
+
+                                <input type="text"
+                                       class="form-control"
+                                       placeholder="फोन नंबर">
+
+                            </div>
+
+                            <div class="col-md-6">
+
+                                <input type="text"
+                                       class="form-control"
+                                       placeholder="विषय">
+
+                            </div>
+
+                            <div class="col-12">
+
+                                <textarea class="form-control"
+                                          rows="5"
+                                          placeholder="संदेश लिखें"></textarea>
+
+                            </div>
+
+                            <div class="col-12">
+
+                                <button type="submit" class="btn btn-main">
+                                    संदेश भेजें
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Map -->
+
+        <div class="row mt-5" data-aos="zoom-in">
+
+            <div class="col-12">
+
+                <div class="map-box">
+
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d..."
+                        width="100%"
+                        height="350"
+                        style="border:0;"
+                        allowfullscreen=""
+                        loading="lazy">
+
+                    </iframe>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+    <!--=================================
+            FOOTER
+==================================-->
+
+<footer class="footer-section">
+
+    <div class="container">
+
+        <div class="row g-4">
+
+            <!-- About -->
+
+            <div class="col-lg-4 col-md-6">
+
+                <div class="footer-widget">
+
+                    <div class="footer-logo">
+
+                        <img src="images/logo.png" alt="Logo">
+
+                        <h4>नगर पंचायत</h4>
+
+                    </div>
+
+                    <p>
+                        नगर पंचायत नागरिकों को बेहतर सुविधाएँ, पारदर्शी प्रशासन
+                        और डिजिटल सेवाएँ प्रदान करने के लिए प्रतिबद्ध है।
+                    </p>
+
+                    <div class="footer-social">
+
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-twitter-x"></i></a>
+                        <a href="#"><i class="bi bi-youtube"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Quick Links -->
+
+            <div class="col-lg-2 col-md-6">
+
+                <div class="footer-widget">
+
+                    <h5>त्वरित लिंक</h5>
+
+                    <ul>
+
+                        <li><a href="#">मुख्य पृष्ठ</a></li>
+                        <li><a href="#">हमारे बारे में</a></li>
+                        <li><a href="#">सेवाएँ</a></li>
+                        <li><a href="#">गैलरी</a></li>
+                        <li><a href="#">संपर्क</a></li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+            <!-- Services -->
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="footer-widget">
+
+                    <h5>सेवाएँ</h5>
+
+                    <ul>
+
+                        <li><a href="#">जन्म प्रमाण पत्र</a></li>
+                        <li><a href="#">मृत्यु प्रमाण पत्र</a></li>
+                        <li><a href="#">गृहकर भुगतान</a></li>
+                        <li><a href="#">जलकर भुगतान</a></li>
+                        <li><a href="#">शिकायत दर्ज करें</a></li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+            <!-- Contact -->
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="footer-widget">
+
+                    <h5>संपर्क जानकारी</h5>
+
+                    <p><i class="bi bi-geo-alt-fill"></i> नगर पंचायत कार्यालय, उत्तर प्रदेश</p>
+
+                    <p><i class="bi bi-telephone-fill"></i> +91 9876543210</p>
+
+                    <p><i class="bi bi-envelope-fill"></i> info@nagarpanchayat.in</p>
+
+                    <p><i class="bi bi-clock-fill"></i> 10:00 AM - 5:00 PM</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Bottom Bar -->
+
+        <div class="footer-bottom text-center">
+
+            <p>
+                © 2026 नगर पंचायत | सभी अधिकार सुरक्षित
+            </p>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+
+    <!-- Custom JS -->
+    <script src="js/main.js"></script>
+
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+    </script>
+
+</body>
+
+</html>
